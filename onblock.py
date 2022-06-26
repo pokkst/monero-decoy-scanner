@@ -2,7 +2,6 @@
 
 from utils import *
 
-existing_txs = load_previous_txs()
 height = get_height()
 should_lookback = height % 20 == 0
 if should_lookback:

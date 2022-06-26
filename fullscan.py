@@ -4,7 +4,6 @@ from utils import *
 import threading
 from dataclasses import dataclass
 
-existing_txs = load_previous_txs()
 height = get_height()
 remaining = height - ringct_start
 threads = 4
@@ -24,6 +23,7 @@ def scan_blocks(start_height):
         block = get_block_by_height(current_height)
         record_any_transactions(block)
         current_height += 1
+    print("End thread.")
 
 current_thread = 0
 while current_thread < threads:
@@ -34,6 +34,3 @@ while current_thread < threads:
     except:
         print("Error: unable to start thread")
     current_thread += 1
-
-while 1:
-   pass

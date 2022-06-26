@@ -99,3 +99,5 @@ def load_previous_txs():
         tx_hash = line.split(": ")[1].rstrip()
         temp_txs += [tx_hash]
     return temp_txs
+
+existing_txs = load_previous_txs()
