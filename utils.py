@@ -81,14 +81,15 @@ def record_any_transactions(block):
         maybe_record_ring_member(ring_member)
 
 def maybe_record_ring_member(ring_member):
+    global existing_txs
     found = False
     if ring_member.tx_hash in existing_txs:
         found = True
 
     if not found:
+        existing_txs += [ring_member.tx_hash]
         with open('decoys.txt', 'a') as f:
             f.write(ring_member.idx.__str__() + ": " + ring_member.tx_hash+"\n")
-        existing_txs += [ring_member.tx_hash]
 
 def load_previous_txs():
     temp_txs = []
