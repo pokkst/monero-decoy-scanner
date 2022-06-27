@@ -24,3 +24,9 @@ The integers are the output indices. If you need to get the index of an output, 
 Transactions detected are stored in decoys.txt in your monerod install location with the following format:
 
 ```output_index: transaction_hash```
+
+The repository also comes with `fullscan.py`. This script starts at a configured block height (by default it is the height where RingCT started, but it can be changed) and iterates through all blocks until it reaches the chain height. It can be executed with:
+
+```python fullscan.py```
+
+It is not recommended to use this as the script to run for --block-notify.
