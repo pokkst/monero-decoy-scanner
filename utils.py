@@ -86,15 +86,15 @@ def maybe_record_ring_member(ring_member):
         found = True
 
     if not found:
-        f = open('decoys.txt', 'a')
-        f.write(ring_member.idx.__str__() + ": " + ring_member.tx_hash+"\n")
-        f.close()
+        with open('decoys.txt', 'a') as f:
+            f.write(ring_member.idx.__str__() + ": " + ring_member.tx_hash+"\n")
+        existing_txs += [ring_member.tx_hash]
 
 def load_previous_txs():
     temp_txs = []
-    f = open('decoys.txt', 'r')
-    txs = f.readlines()
-    f.close()
+    txs = []
+    with open('decoys.txt', 'r') as f:
+        txs = f.readlines()
     for line in txs:
         tx_hash = line.split(": ")[1].rstrip()
         temp_txs += [tx_hash]
