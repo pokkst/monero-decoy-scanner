@@ -11,7 +11,7 @@ class RingMember:
     tx_hash: str
 
 ringct_start = 1220516
-existing_txs = []
+existing_ring_members = []
 
 #UPDATE THIS TO WATCH FOR DESIRED OUTPUTS
 outputs_to_watch = [00000000, 00000000, 00000000, 00000000, 00000000]
@@ -81,13 +81,14 @@ def record_any_transactions(block):
         maybe_record_ring_member(ring_member)
 
 def maybe_record_ring_member(ring_member):
-    global existing_txs
+    global existing_ring_members
     found = False
-    if ring_member.tx_hash in existing_txs:
+    member_string = ring_member.tx_hash+":"+ring_member.idx.__str__()
+    if member_string in existing_ring_members:
         found = True
 
     if not found:
-        existing_txs += [ring_member.tx_hash]
+        existing_ring_members += [ring_member.tx_hash]
         with open('decoys.txt', 'a') as f:
             f.write(ring_member.idx.__str__() + ": " + ring_member.tx_hash+"\n")
 
@@ -98,7 +99,8 @@ def load_previous_txs():
         txs = f.readlines()
     for line in txs:
         tx_hash = line.split(": ")[1].rstrip()
-        temp_txs += [tx_hash]
+        idx = line.split(": ")[0].rstrip()
+        temp_txs += [tx_hash+":"+idx]
     return temp_txs
 
-existing_txs = load_previous_txs()
+existing_ring_members = load_previous_txs()
