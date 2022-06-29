@@ -10,6 +10,7 @@ class RingMember:
     idx: int
     tx_hash: str
 
+version = '0.1'
 ringct_start = 1220516
 existing_ring_members = []
 

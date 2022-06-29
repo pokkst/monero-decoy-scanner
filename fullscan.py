@@ -25,6 +25,8 @@ def scan_blocks(start_height):
         current_height += 1
     print("End thread.")
 
+print("Monero Decoy Scanner (MDS) v" + version)
+print("Starting scan...")
 current_thread = 0
 while current_thread < threads:
     try:
