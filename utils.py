@@ -15,7 +15,11 @@ ringct_start = 1220516
 existing_ring_members = []
 
 #UPDATE THIS TO WATCH FOR DESIRED OUTPUTS
-outputs_to_watch = [00000000, 00000000, 00000000, 00000000, 00000000]
+if not os.path.isfile("output_list.json"):
+    outputs_to_watch = [00000000, 00000000, 00000000, 00000000, 00000000]
+else:
+    with open("output_list.json", "r") as f:
+        outputs_to_watch = json.load(f)
 
 def get_transactions(tx_hashes):
     PARAMS = {'txs_hashes' : tx_hashes, 'decode_as_json' : True}
