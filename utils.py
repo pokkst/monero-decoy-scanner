@@ -90,7 +90,7 @@ def maybe_record_ring_member(ring_member):
 
     if not found:
         existing_ring_members += [member_string]
-        with open('decoys.txt', 'a') as f:
+        with open('decoys.txt', 'a+') as f:
             f.write(ring_member.idx.__str__() + ": " + ring_member.tx_hash+"\n")
 
 def load_previous_txs():
