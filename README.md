@@ -5,11 +5,7 @@ Listens to the chain for transactions that use certain outputs as decoy ring mem
 
 Setup is quite simple. You will need Python 3 and a monerod instance.
 
-Prior to running monerod, in your monero install location you will need to run the following:
-
-```touch decoys.txt```
-
-The script as of right now does not do this for you since it was an after-thought. This is where any found transactions will be stored. It should be noted that not all transactions found with an output as a ring member mean the output was a decoy. Some transactions for a list of outputs could very much be real spends, but due to the untraceable nature of XMR, it is extremely difficult to determine whether or not any given transaction is a real spend, if it has even been spent at all.
+It should be noted that not all transactions found with an output as a ring member mean the output was a decoy. Some transactions for a list of outputs could very much be real spends, but due to the untraceable nature of XMR, it is extremely difficult to determine whether or not any given transaction is a real spend, if it has even been spent at all.
 
 Run monerod with `block-notify` set. As per Monero documentation, the argument needs full paths.
 
