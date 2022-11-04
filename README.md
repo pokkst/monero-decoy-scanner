@@ -1,3 +1,9 @@
+# WARNING
+This repository is no longer maintained. Please see the latest changes here:
+http://4hsesnr6mjb4qrflgf5gezjaszzoqnnisin7ywzbsv6pgcxysiaq.b32.i2p/pokkst/monero-decoy-scanner
+
+To access, please install I2P: https://geti2p.net and configure your browser's proxy settings to use an HTTP proxy at 127.0.0.1:4444.
+
 # monero-decoy-scanner
 Listens to the chain for transactions that use certain outputs as decoy ring members.
 
